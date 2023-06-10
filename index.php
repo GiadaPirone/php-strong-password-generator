@@ -15,8 +15,15 @@
 
     <!-- parte php -->
     <?php
-        include "./funzioni.php";
-        $quantitaCaratteri = $_GET["lunghezzaPs"];
+
+    include "./funzioni.php";
+
+    $includeLettere= $_GET["lettere"];
+    $includeNumeri = $_GET["numeri"];
+    $includeSimboli = $_GET["simboli"];
+    $quantitaCaratteri = $_GET["lunghezzaPs"];
+
+
     ?>
 
     <main>
@@ -31,7 +38,7 @@
             <div class="row">
                 <div class="col">
                     <form action="./index.php" method="GET">
-
+                        <!-- scelta quantità caratteri. -->
                         <div class="form-floating">
                             <select class="form-select" name="lunghezzaPs" id="lunghezzaPs" na aria-label="Floating label select example">
                                 <option selected value="0">Scegli la quantità di caratteri </option>
@@ -42,12 +49,36 @@
                             <label for="lunghezzaPs"></label>
                         </div>
 
+                        <!-- scelta tra numeri, lettere,simboli. -->
+                        <!-- lettete. -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" name="lettere" id="lettere">
+                            <label class="form-check-label" for="lettere">
+                                lettere
+                            </label>
+                        </div>
+                        <!-- numeri. -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" name="numeri" id="numeri">
+                            <label class="form-check-label" for="numeri">
+                               Numeri
+                            </label>
+                        </div>
+                        <!-- simboli. -->
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" name="simboli" id="simboli">
+                            <label class="form-check-label" for="simboli">
+                                Simboli
+                            </label>
+                        </div>
+
+
                         <button type="submit">Invia</button>
                         <button type="reset">Cancella</button>
 
                     </form>
 
-                    <div><?php echo generaPs($quantitaCaratteri) ?></div>
+                    <div><?php echo generaPs($quantitaCaratteri, $includeLettere, $includeNumeri, $includeSimboli ) ?></div>
                 </div>
             </div>
         </div>
